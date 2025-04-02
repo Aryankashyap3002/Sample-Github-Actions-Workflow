@@ -1,0 +1,1 @@
+This is sample github actions workflow setups.
