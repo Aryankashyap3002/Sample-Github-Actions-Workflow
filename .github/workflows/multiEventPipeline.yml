@@ -8,6 +8,8 @@ on:
     pull_request:
         branches:
             - master
+        types:
+            - closed
 
     workflow_dispatch:
 
@@ -24,7 +26,13 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: "Multi Pipeline"
-              run: echo "running on master pull requset" 
+              run: echo "running on master pull requset"
+    on-pull-request-closed:
+        if: github.event_name == 'pull-request' && github.event.action == 'closed'
+        runs-on: "ubuntu-latest"
+        steps:
+            - name: "running on pull closed"
+              run: echo "Running on pull closed"
 
     on-workflow-dispatched:
         if: github.event_name == 'workflow_dispatch'
