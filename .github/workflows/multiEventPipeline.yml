@@ -1,0 +1,35 @@
+name: "Multi Event Pipeline"
+
+on:
+    push:
+        branches:
+            - master
+            - test
+    pull_request:
+        branches:
+            - master
+
+    workflow_dispatch:
+
+
+jobs:
+    on-push:
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Multi Pipeline"
+              run: echo "running on master/test push" 
+    on-pull-request:
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Multi Pipeline"
+              run: echo "running on master pull requset" 
+
+    on-workflow-dispatched:
+        if: github.event_name == 'workflow_dispatch'
+        runs-on: "ubuntu-latest"
+        steps:
+            - name: "On flow dispatched"
+              run: echo "Running on event workflow dispatched"
+
