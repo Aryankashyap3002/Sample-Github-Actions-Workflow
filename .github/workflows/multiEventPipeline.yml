@@ -1,0 +1,14 @@
+name: "Multi Event Pipeline"
+
+on:
+    push:
+        branches:
+            - master
+            - production
+
+jobs:
+    multi_production:
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Multi Pipeline"
+              run: echo "running on master push"
