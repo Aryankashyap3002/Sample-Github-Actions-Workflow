@@ -1,0 +1,25 @@
+name: "Multi Event Pipeline"
+
+on:
+    push:
+        branches:
+            - master
+            - test
+    pull_request:
+        branches:
+            - master
+
+jobs:
+    on-push:
+        if: github.event_name == 'push'
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Multi Pipeline"
+              run: echo "running on master/test push" 
+    on-pull-request:
+        if: github.event_name == 'pull_request'
+        runs-on: ubuntu-latest
+        steps:
+            - name: "Multi Pipeline"
+              run: echo "running on master pull requset" 
+
